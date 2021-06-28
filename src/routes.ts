@@ -1,16 +1,8 @@
 import {Router} from 'express'
-import {jwtSign} from './util/jwt'
+import SessionController from './session/sessionController'
 
 const router = Router()
 
-router.post('/login', (req, res) => {
-  const {login, password} = req.body
-    let payload = {
-      _id: '1',
-      login
-    }
-    let token = jwtSign(payload)
-  res.json({token});
-});
+router.post('/login', SessionController.index);
 
 export default router;
